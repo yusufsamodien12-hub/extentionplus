@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    min-width: 450px;
+    height: 600px;
+  }
+  
+  #root {
+    height: 100%;
+    width: 100%;
+  }
+}

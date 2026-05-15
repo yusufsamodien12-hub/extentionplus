@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Call Quality Pro",
+  "version": "1.0.0",
+  "description": "A professional call quality assessment and checklist tool.",
+  "permissions": ["storage", "sidePanel"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Call Quality Pro"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  }
+}
