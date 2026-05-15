@@ -1,52 +1,62 @@
-# Call Quality Pro - Chrome Extension
+# Call Quality Pro - Microsoft Edge / Chrome Extension
 
-## 🚀 Publishing to the Chrome Web Store
+This repository contains the production-ready extension package for **Call Quality Pro**.
 
-Your package failed validation because you zipped the **entire project folder**. The Chrome Web Store requires the `manifest.json` to be at the **root** of your zip file.
+## ✅ Ready for Microsoft Edge Add-ons
+To publish to Microsoft Edge Add-ons, build the extension and upload a ZIP file containing the contents of the `dist` folder.
 
-### How to create the correct ZIP:
-1.  **Build the project** (if you haven't already):
-    ```bash
-    npm run build
-    ```
-2.  **Open the `dist` folder**.
-3.  **Select ALL files inside the `dist` folder** (`manifest.json`, `index.html`, `background.js`, `assets`, etc.).
-4.  **Right-click and "Compress to ZIP file"** (or "Send to > Compressed (zipped) folder").
-5.  **Rename the resulting zip** to something like `call-quality-pro.zip`.
+### 1. Build the extension
+From `call-quality-pro`:
 
-**⚠️ IMPORTANT:** Do NOT zip the `dist` folder itself. Zip the **contents** of the `dist` folder.
-
-### Why your previous upload failed:
-- You zipped the `extention-main` folder.
-- Inside your zip, the path was `extention-main/public/manifest.json`.
-- Chrome expects the path to be just `manifest.json`.
-- It also saw source code files (`src/`, `package.json`, etc.) which are not allowed in the final package.
-
----
-
-## ⚠️ CRITICAL: How to Load the Extension Locally
-
-You are seeing errors because you are trying to load the `src` or `public` folders. Chrome Extensions require a **built** version of the project.
-
-### Step 1: Build the Project
-If you are working locally, open your terminal in this folder and run:
 ```bash
+npm install
 npm run build
 ```
-This will create a new folder called **`dist`**.
 
-### Step 2: Load the Extension in Chrome
-1. Open Chrome and go to `chrome://extensions/`
-2. Enable **Developer mode** (toggle in the top right).
-3. Click **Load unpacked**.
-4. **IMPORTANT**: Select the **`dist`** folder.
+### 2. Verify the build output
+After building, confirm this output exists:
 
----
+- `dist/manifest.json`
+- `dist/index.html`
+- `dist/background.js`
+- `dist/icons/icon-16.png`
+- `dist/icons/icon-48.png`
+- `dist/icons/icon-128.png`
+- `dist/assets/...`
 
-## Why the other folders fail:
-- **`src`**: Does not contain a `manifest.json` file.
-- **`public`**: Contains the manifest, but it's missing the compiled `background.js` script (which is only created inside `dist` after you build).
+### 3. Package for upload
+1. Open the `call-quality-pro/dist` folder.
+2. Select all files and folders inside `dist`.
+3. Create a ZIP archive from those selected files.
+4. Do not zip the `dist` folder itself.
 
-## Features
-- **Popup**: Click the extension icon to open.
-- **Side Panel**: Right-click the icon and select "Open side panel" to use it as a sidebar.
+The ZIP file must contain `manifest.json` at the root.
+
+### 4. Upload to Microsoft Edge Add-ons
+Use the Edge Add-ons dashboard and upload the ZIP created in step 3.
+
+> Note: Microsoft Edge Add-ons accepts Chrome-compatible extensions, so the same package works as long as the manifest and assets are valid.
+
+## Local testing
+To run the extension locally in the browser for development:
+
+```bash
+npm run dev
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
+For local Chrome/Edge extension debugging:
+1. Go to `chrome://extensions/` or `edge://extensions/`
+2. Enable **Developer mode**
+3. Click **Load unpacked**
+4. Select the `call-quality-pro/dist` folder
+
+## Notes
+- `manifest.json` is now configured with icon assets for store compatibility.
+- The project is versioned as `1.0.0` in `package.json`.
+- `public/` assets are copied into `dist/` by Vite during build.

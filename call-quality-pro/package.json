@@ -1,7 +1,8 @@
 {
-  "name": "react-example",
+  "name": "call-quality-pro",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A production-ready Microsoft Edge / Chrome extension for call quality assessment.",
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
